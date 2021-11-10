@@ -1,0 +1,62 @@
+<p>user-claims-list works!</p>
+<h5>{{errorMessage}}</h5>
+<!-- <ag-grid-angular style="width: 700px; height: 500px;" class="ag-theme-balham" [rowData]="rowData"
+    [columnDefs]="columnDefs">  
+</ag-grid-angular> -->
+
+<button mat-raised-button color="primary" (click)="exportExcel()">Export as Excel</button> 
+
+ <ag-grid-angular style="width: 700px; height: 500px;" class="ag-theme-balham" [rowData]="userClaims"
+    [columnDefs]="columnDefs">
+</ag-grid-angular> 
+
+<!-- <div class="row" *ngFor="let userClaim of userClaims">
+    <div class="col s12 m7">
+        <div class="card">
+            <div class="card-content">
+                <span>Id :{{ userClaim.date }}</span>
+                <br>
+                <span>Username :{{ userClaim.date }}</span>
+                <br>
+                <span>Email : {{ userClaim.date }}</span>
+                <br>
+                <span>name : {{ name }}</span>
+                <br> 
+                <br>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<table>
+    <tr>
+        <td colspan="4">First records</td>
+    </tr>
+    <tr *ngFor="let userClaim of userClaims">
+        <td>Id :{{ userClaim.TPA }}</td>
+        <td>Username :{{ userClaim.Network }}</td>
+        <td>Email : {{ userClaim.Provider }}</td> 
+    </tr>
+</table>
+
+<!-- <div class="row" *ngfor="let my in myData" >
+    <div class="col s12 m7">
+        <div class="card">
+            <div class="card-content">
+                <span>technology :{{ my.technology }}</span>
+                <br>
+                <span>name :{{ my.name }}</span>
+                <br>
+                <span>qualification : {{ my.qualification }}</span>  
+                <br>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- <table>
+    <tr *ngFor="let my of myData">
+        <td>Name :{{ my.name }}</td>
+        <td>Qualification :{{ my.qualification }}</td>
+        <td>Technology :{{ my.technology }}</td>
+    </tr>
+</table> -->

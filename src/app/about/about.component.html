@@ -1,0 +1,182 @@
+<div class="card">
+  <div class="card-body">
+    <form #studentForm="ngForm">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            TPA :
+          </div>
+          <div class="col-sm">
+            <select class="form-select" aria-label="TPA" id="BranchId" name="BranchId" [(ngModel)]="BranchId">
+              <option value="" disabled selected>Choose your TPA</option>
+              <option value="{{ option.value }}" *ngFor="let option of tpa">{{ option.key }}</option>
+            </select>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            Report Header :
+          </div>
+          <div class="col-sm">
+            <select class="form-select" aria-label="Report Header" id="ReportHeaderId" name="ReportHeaderId" [(ngModel)]="ReportHeaderId" >
+              <option value="" disabled selected>Report Header</option>
+              <option value="{{ option.value }}" *ngFor="let option of ReportHeader">{{ option.key }}</option>
+            </select>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            Payer :
+          </div>
+          <div class="col-sm">
+            <select class="form-select" aria-label="Payer" id="Payer" name="Payer" [(ngModel)]="Payer" >
+              <option value="" disabled selected>Payer</option>
+              <option value="%">Select All</option>
+            </select>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            Client :
+          </div>
+          <div class="col-sm">
+            <select class="form-select" aria-label="Client" id="Client" name="Client" [(ngModel)]="Client">
+              <option value="" disabled selected>Client</option>
+              <option value="%">Select All</option>
+            </select>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            Prover Group :
+          </div>
+          <div class="col-sm">
+            <select class="form-select" aria-label="Prover Group" id="ProviderGroup" name="ProviderGroup" [(ngModel)]="ProviderGroup"
+              >
+              <option value="" disabled selected>Prover Group</option>
+              <option value="%">Select All</option>
+            </select>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            Date Type :
+          </div>
+          <div class="col-sm">
+            <select class="form-select" aria-label="Date Type" id="dateType" name="dateType" [(ngModel)]="dateType" >
+              <option value="" disabled selected>Date Type</option>
+              <option value="Policy Date">Policy Date</option>
+              <option value="Trans.Date">Trans. Date</option>
+              <option value="Enc.Date">Enc. Date</option>
+            </select>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            Date Period From :
+          </div>
+          <div class="col-sm">
+            <input type="date" class="form-control" id="DateFrom" name="DateFrom" [(ngModel)]="DateFrom">
+            <script>
+              $('.datepicker').pickadate({
+                selectMonths: true, // Enable Month Selection
+                selectYears: 10, // Creates a dropdown of 10 years to control year
+                format: 'dd/mm/yyyy'
+              });
+            </script>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            Date Period To :
+          </div>
+          <div class="col-sm">
+            <input type="date" class="form-control" id="DateTo" name="DateTo" [(ngModel)]="DateTo">
+            <script>
+              $('.datepicker').pickadate({
+                selectMonths: true, // Enable Month Selection
+                selectYears: 10, // Creates a dropdown of 10 years to control year
+                format: 'dd/mm/yyyy'
+              });
+            </script>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            <button class="btn btn-primary" type="submit" (click)="RegisterStudent(studentForm)">Submit</button>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            <button mat-raised-button color="primary" (click)="exportExcel()">Export as Excel</button>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm">
+            <ngx-spinner></ngx-spinner>
+            <h5>{{errorMessage}}</h5>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm"></div>
+          <div class="col-sm">
+            <div *ngIf="userClaims?.length">
+              <ag-grid-angular style="width: 700px; height: 500px;" class="ag-theme-balham" [rowData]="userClaims"
+                [columnDefs]="columnDefs">
+              </ag-grid-angular>
+            </div>
+          </div> <div class="col-sm"></div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm">
+            <div *ngIf="!userClaims?.length">
+
+              <p>No records found.</p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
