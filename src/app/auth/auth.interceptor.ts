@@ -17,8 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
         if (localStorage.getItem('userToken') == "")
             this.router.navigateByUrl('/login');
 
-        if (localStorage.getItem('userToken') != null) {
-            console.log('intercept : userToken success, Token = ' + localStorage.getItem('userToken'));
+        if (localStorage.getItem('userToken') != null) { 
             const clonedreq = req.clone({
                 headers: req.headers.set("Authorization", "Bearer " + localStorage.getItem('userToken'))
             });

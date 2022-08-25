@@ -25,7 +25,7 @@ export class UserClaimsListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   getPosts(): void {
-    this.userService.getUserClaims(" Exec Sp_vW_ENTFC_FullClaims @Tpa = 'FC' ,@DateType='Trans.Date' ,@SDate='01-Oct-2021' ,@EDate='06-Nov-2021' ,@Payer='%' ,@Client='%' ,@Provider_Group='%' ,@Provider='%' ")
+    this.userService.getUserClaims(" Exec Sp_vW_ENTFC_FullClaims_T1 @Tpa = 'FC' ,@DateType='Trans.Date' ,@SDate='01-Oct-2018' ,@EDate='06-Nov-2021' ,@Payer='%' ,@Client='%' ,@Provider='%' ,@CLAIM_STATUS='Pending',@PAYMENT_STATUS='%'")
       .subscribe((resultArray: any) => { this.userClaims = resultArray },
         error => this.errorMessage = error); 
   }

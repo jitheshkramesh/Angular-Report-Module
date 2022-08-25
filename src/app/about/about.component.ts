@@ -83,7 +83,8 @@ export class AboutComponent implements OnInit {
   getPosts(): void {
     this.errorMessage = "";
     this.spinner.show();
-    this.userService.getUserClaims("Exec " + this.ReportHeaderId + " " + " @Tpa = '" + this.BranchId + "' ,@DateType='" + this.dateType + "' ,@SDate='" + this.DateFrom + "' ,@EDate='" + this.DateTo + "' ,@Payer='" + this.Payer + "' ,@Client='" + this.Client + "' ,@Provider_Group='" + this.ProviderGroup + "' ,@Provider='%'")
+    //this.userService.getUserClaims("Exec " + this.ReportHeaderId + " " + " @Tpa = '" + this.BranchId + "' ,@DateType='" + this.dateType + "' ,@SDate='" + this.DateFrom + "' ,@EDate='" + this.DateTo + "' ,@Payer='" + this.Payer + "' ,@Client='" + this.Client + "' ,@Provider_Group='" + this.ProviderGroup + "' ,@Provider='%'")
+    this.userService.getUserClaims("Exec Sp_vW_ENTFC_FullClaims_T1 " + " @Tpa = '" + this.BranchId + "' ,@DateType='" + this.dateType + "' ,@SDate='" + this.DateFrom + "' ,@EDate='" + this.DateTo + "' ,@Payer='" + this.Payer + "' ,@Client='" + this.Client + "' ,@Provider='%' ,@CLAIM_STATUS='%' ,@PAYMENT_STATUS='%' ")
       .subscribe((resultArray: any) => {
         this.userClaims = resultArray,
           this.spinner.hide();

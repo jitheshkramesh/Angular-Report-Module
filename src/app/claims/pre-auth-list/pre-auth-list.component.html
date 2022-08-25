@@ -1,0 +1,69 @@
+<div class="card">
+    <div class="card-body">
+        <div class="card-container">
+            <div class="row">
+                <button mat-raised-button color="primary" (click)="getPostsRefresh()">Refresh</button>
+            </div>
+            <!-- <h1 class="mb-5">Angular DataTable Tutorial With Example | ScratchCode.io</h1> -->
+
+            <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+                <thead>
+                    <tr>
+                        <th>Request ID</th>
+
+                        <th>Authority</th>
+
+                        <th>Member ID</th>
+
+                        <th>Member Name</th>
+
+                        <th>Facility Name</th>
+
+                        <th>Req. Amt.</th>
+
+                        <th>Appr. Amt.</th>
+
+                        <th>Status</th>
+
+                        <th style="width: 90px;">Submi. Date</th>
+                        <th>Process Date</th>
+                        <th>Opened By</th>
+                        <th>Category</th>
+                        <th>Process status</th>
+                        <th>Action Time</th>
+                        <!-- <th>url</th> -->
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let post of posts">
+                        <td style="text-align: left;"><a routerLink="/preauthDetails"
+                                [queryParams]="{id:post.ENT180_01}">{{ post.ENT181_02 }} - {{post.ENT180_01}}</a></td>
+
+                        <td style="text-align: left;">{{ post.ENT180_05 }}</td>
+
+                        <td style="text-align: left;">{{ post.ENT127_02 }}</td>
+
+                        <td style="text-align: left;">{{ post.ENT127_03 }}</td>
+
+                        <td style="text-align: left;">{{ post.ENT111_03 }}</td>
+
+                        <td style="text-align: right;">{{ post.est | number : '1.2-2' }}</td>
+
+                        <td style="text-align: right;">{{ post.appr | number : '1.2-2' }}</td>
+
+                        <td style="text-align: left;">{{ post.Status }}</td>
+
+                        <td style="text-align: left;">{{ post.ENT181_22 | date:'dd-MMM-yyyy'}}</td>
+                        <td style="text-align: left;width: 120px;">{{ post.ENT180_35 | date:'dd-MMM-yyyy' }}</td>
+                        <td style="text-align: left;">{{ post.OpenedBy }}</td>
+                        <td style="text-align: left;">{{ post.Cat }}</td>
+                        <td style="text-align: left;">{{ post.ENT180_37 }}</td>
+                        <td style="text-align: left;">{{ post.Dur }}</td>
+                        <!-- <td style="text-align: left;">{{ post.url }}</td> -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

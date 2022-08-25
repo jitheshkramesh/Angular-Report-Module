@@ -8,6 +8,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent } from './app.component';
 import { UserService } from './shared/user.service';
@@ -24,6 +25,12 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AuthGuard } from './auth/auth.guard';
 import { SignOutComponent } from './user/sign-out/sign-out.component';
+import { PreAuthListComponent } from './claims/pre-auth-list/pre-auth-list.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { PreAuthDetailsComponent } from './claims/pre-auth-details/pre-auth-details.component';
+import { DragDropListComponent } from './drag-drop-list/drag-drop-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +41,19 @@ import { SignOutComponent } from './user/sign-out/sign-out.component';
     HomeComponent,
     AboutComponent,
     UserClaimsListComponent,
-    SignOutComponent
+    SignOutComponent,
+    PreAuthListComponent,
+    PagenotfoundComponent,
+    LandingPageComponent,
+    PreAuthDetailsComponent,
+    DragDropListComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    DataTablesModule,
     HttpClientModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot(appRoutes),

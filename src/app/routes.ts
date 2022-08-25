@@ -7,14 +7,19 @@ import { AboutComponent } from './about/about.component';
 import { UserClaimsListComponent } from './user-claims-list/user-claims-list.component';
 import { AuthGuard } from './auth/auth.guard';
 import { SignOutComponent } from './user/sign-out/sign-out.component';
+import { PreAuthListComponent } from './claims/pre-auth-list/pre-auth-list.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { PreAuthDetailsComponent } from './claims/pre-auth-details/pre-auth-details.component';
+import { DragDropListComponent } from './drag-drop-list/drag-drop-list.component';
 
 export const appRoutes: Routes = [
     {
-        path: 'home', component: UserComponent, canActivate: [AuthGuard],
+        path: 'home', component: LandingPageComponent, canActivate: [AuthGuard],
         children: [{ path: '', component: HomeComponent }]
     },
     {
-        path: 'about', component: UserComponent, canActivate: [AuthGuard],
+        path: 'about', component: LandingPageComponent, canActivate: [AuthGuard],
         children: [{ path: '', component: AboutComponent }]
     },
     {
@@ -26,13 +31,29 @@ export const appRoutes: Routes = [
         children: [{ path: '', component: SignInComponent }]
     },
     {
-        path: 'claimsList', component: UserComponent, canActivate: [AuthGuard],
+        path: 'claimsList', component: LandingPageComponent, canActivate: [AuthGuard],
         children: [{ path: '', component: UserClaimsListComponent }]
     },
     {
-        path: 'signout', component: SignOutComponent, canActivate: [AuthGuard],
+        path: 'signout', component: UserComponent, canActivate: [AuthGuard],
         children: [{ path: '', component: SignOutComponent }]
     },
-    { path: '', redirectTo: '/login', pathMatch: 'full' }
+    {
+        path: 'preauthList', component: LandingPageComponent, canActivate: [AuthGuard],
+        children: [{ path: '', component: PreAuthListComponent }]
+    },
+    {
+        path: 'preauthDetails', component: LandingPageComponent, canActivate: [AuthGuard],
+        children: [{ path: '', component: PreAuthDetailsComponent }]
+    },
+    {
+        path: 'dragdrop',  component: LandingPageComponent,  
+        children: [{ path: '', component: DragDropListComponent }]
+    } ,
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    {
+        path: '**',  component: LandingPageComponent, canActivate: [AuthGuard],
+        children: [{ path: '', component: PagenotfoundComponent }]
+    } 
 
 ];
